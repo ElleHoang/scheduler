@@ -5,9 +5,9 @@ import React from "react";
 // need to update DayListItem component to reflect this after building stories
 export default function DayListItem(props) {
   return (
-    <li> {/* rep. entire day item */}
-      <h2 className="text--regular">DayName</h2> {/* should display day name */}
-      <h3 className="text--light">X sports remaining</h3> {/* should display the spots remaining for a day */}
+    <li onClick={() => props.setDay(props.name)}> {/* rep. entire day item */}
+      <h2 className="text--regular">{props.name}</h2> {/* should display day name */}
+      <h3 className="text--light">{props.spots} spots remaining</h3> {/* should display the spots remaining for a day */}
     </li>
   );
 }
