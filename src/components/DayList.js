@@ -7,10 +7,30 @@ import DayListItem from "./DayListItem";
 // 3. Function that can be used to set current day SETDAY
 
 // pass data to each <DayListItem> within <DayList> component
+
 export default function DayList(props) {
   
+  // mock days data
+  const days = [
+    {
+      id: 1,
+      name: "Monday",
+      spots: 2,
+    },
+    {
+      id: 2,
+      name: "Tuesday",
+      spots: 5,
+    },
+    {
+      id: 3,
+      name: "Wednesday",
+      spots: 0,
+    },
+  ];
+
   // dynamically create array of <DayListItem> component
-  const parsedDays = props.days.map(day => <DayListItem key={day.id} selected={props.days.name === props.day} {...day} />);
+  const parsedDays = days.map(day => <DayListItem key={day.id} name={day.name} spots={day.spots} selected={day.name === props.day} setDay={props.setDay} />);
   
   return (
     <ul>
