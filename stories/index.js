@@ -7,11 +7,16 @@ import "index.scss";
 
 // story is a function that returns a React element (render component)
 import Button from "components/Button";
+
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
+
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
+
 import Appointment from "components/Appointment/index";
+import Header from "components/Appointment/Header";
+
 
 // Button stories describing what each part of story does (actions of buttons)
 storiesOf("Button", module)
@@ -149,4 +154,5 @@ storiesOf("Appointment", module)
   backgrounds: [{ name: "white", value: "#fff", default: true }]
 })
 .add("Appointment", () => <Appointment text="No Appointment" />)
-.add("Appointment with Time", () => <Appointment time ="Appointment at 12pm" />);
+.add("Appointment with Time", () => <Appointment time ="Appointment at 12pm" />)
+.add("Header", () => <Header time="Appointment at 12pm" />);
