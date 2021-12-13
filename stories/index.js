@@ -21,6 +21,7 @@ import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
+import Form from "components/Appointment/Form";
 
 
 // Button stories describing what each part of story does (actions of buttons)
@@ -202,5 +203,22 @@ storiesOf("Appointment", module)
   <Error
     message="Could not delete appointment"
     onClose={action("onClose")}
+  />
+))
+.add("Edit", () => (
+  <Form
+    /* when user is editing an appointment, form must be pre-filled w/ existing interview data - a student and interviewer */
+    student="Linh Hoang"
+    interviewer={1}
+    interviewers={interviewers}
+    onSave={action("onSave")}
+    onCanel={action("onCancel")}
+  />
+))
+.add("Create", () => (
+  <Form
+    interviewers={interviewers}
+    onSave={action("onSave")}
+    onCancel={action("onCancel")}
   />
 ))
