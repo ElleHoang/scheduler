@@ -16,6 +16,7 @@ import InterviewerList from "components/InterviewerList";
 
 import Appointment from "components/Appointment/index";
 import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
 
 
 // Button stories describing what each part of story does (actions of buttons)
@@ -155,4 +156,5 @@ storiesOf("Appointment", module)
 })
 .add("Appointment", () => <Appointment text="No Appointment" />)
 .add("Appointment with Time", () => <Appointment time ="Appointment at 12pm" />)
-.add("Header", () => <Header time="Appointment at 12pm" />);
+.add("Header", () => <Header time="Appointment at 12pm" />)
+.add("Empty", () => <Empty onAdd={action("onAdd")} />);
