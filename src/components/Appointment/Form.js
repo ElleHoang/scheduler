@@ -3,10 +3,23 @@ import React, { useState } from "react"; // useState hook gives an array contain
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
+//*** FORM COMPONENT ***//
 export default function Form(props) {
   // important to provide default values when creating state
   const [student, setStudent] = useState(props.student || ""); // solution uses JS || operator which will eval to props.student is truthy. If props.student is undefined then it will use emtpy string
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+
+  /*** Inputs Reset Function  ***/
+  const reset = () => {
+    setStudent("");
+    setInterviewer(null);
+  }
+
+  /*** Cancel Function: calls reset() and props.onCancel ***/
+  const cancel = () => {
+    reset();
+    props.onCancel();
+  }
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -29,7 +42,7 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={props.onCancel}>Cancel</Button>
+          <Button danger onClick={cancel}>Cancel</Button>
           <Button confirm onClick={props.onSave}>Save</Button>
         </section>
       </section>
