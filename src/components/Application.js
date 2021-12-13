@@ -39,12 +39,12 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-          {/*
+          /*
           <DayList> renders and passes new props to <DayListItem> causing update to selected visual state
-          */}
+          */
             days={days}
-            day={day}
-            setDay={setDay}
+            value={day}
+            onChange={setDay}
           />
         </nav>
         <img
