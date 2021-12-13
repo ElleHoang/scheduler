@@ -5,11 +5,13 @@ import { action } from "@storybook/addon-actions";
 
 import "index.scss";
 
+// story is a function that returns a React element (render component)
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
+import Appointment from "components/Appointment/index";
 
 // Button stories describing what each part of story does (actions of buttons)
 storiesOf("Button", module)
@@ -140,3 +142,11 @@ storiesOf("InterviewerList", module)
       onChange={action("setInterviewer")}
     />
   ));
+
+// Appointment stories describes what each part of story does
+storiesOf("Appointment", module)
+.addParameters({
+  backgrounds: [{ name: "white", value: "#fff", default: true }]
+})
+.add("Appointment", () => <Appointment text="No Appointment" />)
+.add("Appointment with Time", () => <Appointment time ="Appointment at 12pm" />);
