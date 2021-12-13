@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react"; // useState hook gives an array containing 2 variables: currently stored value, and function to set a new value
 
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
 export default function Form(props) {
+  // important to provide default values when creating state
+  const [student, setStudent] = useState(props.student || ""); // solution uses JS || operator which will eval to props.student is truthy. If props.student is undefined then it will use emtpy string
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
   return (
     <main className="appointment__card appointment__card--create">
