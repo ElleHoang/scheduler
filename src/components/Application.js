@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import axios from "axios";
 
 import "components/Application.scss";
 
@@ -6,6 +7,7 @@ import DayList from "./DayList";
 import "components/Appointment";
 import Appointment from "./Appointment/index"
 
+/*
 //mock days data
 const days = [
   {
@@ -24,7 +26,9 @@ const days = [
     spots: 0,
   },
 ];
+*/
 
+// test data for appointments
 const appointments = [
   {
     id: 1,
@@ -68,6 +72,11 @@ export default function Application(props) {
   const [day, setDay] = useState("Monday");
   //console.log(day);
   //when call setDay action, it changes day state. When day state change, <Application renders and pass new day to <DayList>.
+  const [days, setDays] = useState([]);
+  // defining days as an array
+  // days array pass as prop to DayList component is empty (no days render in sidebar)
+  // next: make request and call setDays method w/ data we retrieve from API
+  
   const parsedAppointments = appointments.map(appointment =>
     <Appointment
       key={appointment.id}
