@@ -76,6 +76,14 @@ export default function Application(props) {
   // defining days as an array
   // days array pass as prop to DayList component is empty (no days render in sidebar)
   // next: make request and call setDays method w/ data we retrieve from API
+
+  useEffect(() => {
+    axios.get("/api/days")
+    .then((response) => {
+      console.log(response.data);
+      setDays(response.data)
+    })
+  }, []);
   
   const parsedAppointments = appointments.map(appointment =>
     <Appointment
