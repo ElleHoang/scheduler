@@ -69,13 +69,26 @@ const appointments = [
 ];
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday");
+  // const [day, setDay] = useState("Monday");
   //console.log(day);
   //when call setDay action, it changes day state. When day state change, <Application renders and pass new day to <DayList>.
-  const [days, setDays] = useState([]);
+  // const [days, setDays] = useState([]);
   // defining days as an array
   // days array pass as prop to DayList component is empty (no days render in sidebar)
   // next: make request and call setDays method w/ data we retrieve from API
+
+  // combined states into state object
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    //appointments: {}
+  });
+
+  // setDay function that updates state w/ new day
+  const setDay = (day) => setState({ ...state, day });
+
+  // setDays function that update the days state
+  const setDays = (days) => setState(prev => ({ ...prev, days }));
 
   useEffect(() => {
     axios.get("/api/days")
@@ -107,8 +120,8 @@ export default function Application(props) {
           /*
           <DayList> renders and passes new props to <DayListItem> causing update to selected visual state
           */
-            days={days}
-            value={day}
+            days={state.days}
+            value={state.day}
             onChange={setDay}
           />
         </nav>
