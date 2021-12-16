@@ -6,7 +6,7 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import "components/Appointment";
 import Appointment from "./Appointment/index"
-
+import { getAppointmentsForDay } from "helpers/selectors";
 /*
 //mock days data
 const days = [
@@ -28,6 +28,7 @@ const days = [
 ];
 */
 
+/*
 // test data for appointments
 const appointments = [
   {
@@ -67,6 +68,7 @@ const appointments = [
     time: "4pm",
   }
 ];
+*/
 
 export default function Application(props) {
   // const [day, setDay] = useState("Monday");
@@ -81,29 +83,38 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    //appointments: {}
+    appointments: {}
   });
 
   // setDay function that updates state w/ new day
   const setDay = (day) => setState({ ...state, day });
 
+  /*
   // setDays function that update the days state
   const setDays = (days) => setState(prev => ({ ...prev, days }));
+  */
 
-  useEffect(() => {
-    axios.get("/api/days")
-    .then((response) => {
-      console.log(response.data);
-      setDays(response.data)
-    })
-  }, []);
-  
-  const parsedAppointments = appointments.map(appointment =>
+  const dailyAppointments = getAppointmentsForDay(state, state.day).map(appointment =>
     <Appointment
       key={appointment.id}
       {...appointment}
     />
   );
+
+  useEffect(() => {
+    Promise.all([
+      axios.get("/api/days"),
+      axios.get("/api/appointments"),
+      axios.get("/api/interviewers"),
+    ])
+    .then((all) => {
+      //console.log(all);
+      //const [days, appointments, interviewers] = all;
+      setState((prev) => (
+        { ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}
+      ));
+    })
+  }, []);
 
   return (
     <main className="layout">
@@ -132,7 +143,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {parsedAppointments}
+        {dailyAppointments}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
