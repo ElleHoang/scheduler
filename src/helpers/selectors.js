@@ -23,3 +23,20 @@ export function getInterview(state, interview) {
   //Otherwise, function should return "null"
   return null;
 }
+
+export function getInterviewersForDay(state, day) {
+  // If there's no interviewers on given day, days data will be empty. Should return empty array
+  if (!state.interviewers || !state.days) {
+    return [];
+  }
+  
+  // find obj in state.days array who's name matches the provided day
+  const interviewersArrDay = state.days.filter((obj) => obj.name === day);
+  if (interviewersArrDay.length === 0) {
+    return [];
+  }
+  
+  // 2. iterate through interviewers array for given day, comparing where it's id matches id of states.interviewers and return that value
+  // return array of interviewers for that day
+   return interviewersArrDay[0].interviewers.map((id) => state.interviewers[id]);
+}
