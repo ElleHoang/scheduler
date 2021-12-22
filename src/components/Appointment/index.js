@@ -6,12 +6,14 @@ import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
+import Status from "./Status";
 import useVisualMode from "hooks/useVisualMode";
 
 // mode constants
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
   // when props.interview contains value, then we want to pass useVisualMode the SHOW mode
@@ -19,6 +21,25 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
+  // ensure that child component (Appointment) can call the action w/ correct data
+  // pass function to "Form" component.
+  const save = (name, interviewer) => {
+    const interview = {
+      student: name,
+      interviewer: interviewer
+    };
+    // console.log("HERE!!!!!!");
+    // console.log(name);
+    // console.log(interview);
+    
+    transition(SAVING);
+    // call props.bookInterview function w/ appointment id and interview as arguments from w/in save function
+    props.bookInterview(props.id, interview)
+      .then(() => {
+        transition(SHOW);
+      });
+  };
 
   return (
     <article className="appointment">
@@ -32,11 +53,18 @@ export default function Appointment(props) {
         />
       )}
       {mode === CREATE && (
+        /*
+          Form should capture "name" and "interviewer" and pass them to props.onSave as arguments
+          then create new interview obj to be passed to props.bookInterview
+        */
         <Form
           interviewers={props.interviewers}
-          onSave={() => console.log("Clicked onSave")}
+          onSave={save}
           onCancel={() => back()}
         />
+      )}
+      {mode === SAVING && (
+        <Status message='Saving' />
       )}
     </article>
   );

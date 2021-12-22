@@ -83,7 +83,7 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {},
+    appointments: {}, // direct child of state obj
     interviewers: {}
   });
 
@@ -100,7 +100,30 @@ export default function Application(props) {
   //Array of interviewers for a certain day
   const dailyInterviewers = getInterviewersForDay(state, state.day);
 
-  
+  // function will log values that we pass to it for now.
+  // in future, it will allow us to change local state when we book interview
+  const bookInterview = (id, interview) => {
+    //console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    }
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    axios.put(`/api/appointments/${id}`, {interview})
+      .then(response => {
+        setState({
+          ...state,
+          appointments
+        });
+        //console.log(`-------Appointments: ${appointments}`);
+      });
+  }
+
   const schedule = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
 
@@ -111,6 +134,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
       />
     );
   });
@@ -149,6 +173,7 @@ export default function Application(props) {
             days={state.days}
             value={state.day}
             onChange={setDay}
+            bookInterview={bookInterview}
           />
         </nav>
         <img
