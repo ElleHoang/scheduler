@@ -120,7 +120,6 @@ export default function Application(props) {
   // function will log values that we pass to it for now.
   // in future, it will allow us to change local state when we book interview
   const bookInterview = (id, interview) => {
-    //console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -136,7 +135,6 @@ export default function Application(props) {
           ...state,
           appointments
         });
-        //console.log(`-------Appointments: ${appointments}`);
       });
   }
 
