@@ -17,7 +17,7 @@ console.log(props);
             className="appointment__actions-button"
             src="images/edit.png"
             alt="Edit"
-            onClick={props.onEdit}
+            onClick={() => props.onEdit()}
           />
           <img
             className="appointment__actions-button"

@@ -5,6 +5,7 @@ import Button from "components/Button";
 
 //*** FORM COMPONENT ***//
 export default function Form(props) {
+  //console.log(props);
   // important to provide default values when creating state
   const [student, setStudent] = useState(props.student || ""); // solution uses JS || operator which will eval to props.student is truthy. If props.student is undefined then it will use emtpy string
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
