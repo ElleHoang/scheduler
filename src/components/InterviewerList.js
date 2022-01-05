@@ -6,14 +6,6 @@ import "components/InterviewerList.scss";
 import PropTypes from "prop-types";
 
 export default function InterviewerList(props) {
-
-  // InterviewerList receives three props:
-  // 1. interviewers:array - array of interviewer objects
-  // 2. setInterviewer:function - function that accepts interviewer id. Will be passed down to InterviewerListItem
-  // 3. interviewer:number - num that rep id of currently selected interviewer
-  
-  // build component that returns array of InterviewerListItem components
-  // each item in list will need unique key prop
   const parsedInterviewers = props.interviewers.map((interviewer) => {
     return (
       <InterviewerListItem

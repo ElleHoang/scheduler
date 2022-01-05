@@ -12,7 +12,7 @@ import { render, cleanup } from "@testing-library/react";
 /*
   We import the component that we are testing
 */
-import Appointment from "components/Appointment/index"
+import Appointment from "components/Appointment/index";
 
 afterEach(cleanup);
 

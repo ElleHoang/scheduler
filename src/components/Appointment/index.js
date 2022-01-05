@@ -1,7 +1,9 @@
 import React from "react";
 
+/*** CSS Component  ***/
 import "components/Appointment/styles.scss";
 
+/*** Appointment Components ***/
 import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
@@ -9,9 +11,11 @@ import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
+
+/*** Custom Hook ***/
 import useVisualMode from "hooks/useVisualMode";
 
-// mode constants
+/*** Mode Constants ***/
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";

@@ -1,4 +1,4 @@
-import React, { useState } from "react"; // useState hook gives an array containing 2 variables: currently stored value, and function to set a new value
+import React, { useState } from "react";
 
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
@@ -7,7 +7,7 @@ import Button from "components/Button";
 export default function Form(props) {
   //console.log(props);
   // important to provide default values when creating state
-  const [student, setStudent] = useState(props.student || ""); // solution uses JS || operator which will eval to props.student is truthy. If props.student is undefined then it will use emtpy string
+  const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
   // track and change error state

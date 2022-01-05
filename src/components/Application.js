@@ -1,11 +1,12 @@
 import React from "react";
 
+/*** CSS Component ***/
 import "components/Application.scss";
 
 /*** Components and Functions ***/
 import DayList from "./DayList";
 import "components/Appointment";
-import Appointment from "./Appointment/index"
+import Appointment from "./Appointment/index";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 /*** Custom Hook ***/

@@ -3,9 +3,6 @@ import classNames from "classnames";
 
 import "components/DayListItem.scss";
 
-// component takes in 3 attributes (name:String - name of day, spots:Number - num of spots remaining, selected:Boolean - true/false declaring day is selected)
-// component takes one action as props (setDay:Function - accepts name of day eg. "Monday", "Tuesday")
-// need to update DayListItem component to reflect this after building stories
 export default function DayListItem(props) {
   let dayClass = classNames("day-list__item", {
     "day-list__item--selected": props.selected,
