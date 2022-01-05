@@ -8,6 +8,13 @@ Interviewer Scheduler is a single page application that allows users to book and
 3. Start the web server using the `npm start` command. The app will be served at <http://localhost:8000/>.
 4. Go to <http://localhost:8000/> in your browser.
 
+## Screenshots
+!["Screenshot of layout when day is clicked"](https://github.com/ElleHoang/scheduler/blob/master/docs/Screen%20Shot%202022-01-05%20at%208.14.09%20AM.png)
+!["Screenshot of layout when try to save a blank name"](https://github.com/ElleHoang/scheduler/blob/511a4d3764607975b2e6d6f1a5e36c148155841f/docs/Screen%20Shot%202022-01-05%20at%208.17.18%20AM.png)
+!["Screenshot of layout when name is inputed and interviewer is selected"](https://github.com/ElleHoang/scheduler/blob/511a4d3764607975b2e6d6f1a5e36c148155841f/docs/Screen%20Shot%202022-01-05%20at%208.15.09%20AM.png)
+!["Screenshot of layout when appointment is saved"](https://github.com/ElleHoang/scheduler/blob/511a4d3764607975b2e6d6f1a5e36c148155841f/docs/Screen%20Shot%202022-01-05%20at%208.15.24%20AM.png)
+!["Screenshot of layout to confirm delete appointment"](https://github.com/ElleHoang/scheduler/blob/511a4d3764607975b2e6d6f1a5e36c148155841f/docs/Screen%20Shot%202022-01-05%20at%208.15.45%20AM.png)
+
 ## Running Webpack Development Server
 
 ```sh
@@ -40,3 +47,14 @@ npm run storybook
 * Jest
 * Storybook
 * Webpack Dev Server
+
+## Contributors
+This project exists thanks to the guidance of these mentors and intructor:
+* Wakeel Ogunsanya
+* Jake Robins
+* Olumuyiwa Osiname
+* Matthew Henderson
+* Phuong Vu
+* Avish Kadakia
+* Konstantin Toroshchin
+* Gary Jipp
